@@ -39,9 +39,9 @@ jobs:
       - name: Deploy
         uses: sebastianpopp/ftp-action@releases/v2
         with:
-          host: ftp.cluster030.hosting.ovh.net
-          user: ${{ secrets.OVH_HOSTING_USER }}
-          password: ${{ secrets.OVH_HOSTING_PASSWORD }}
+          host:  ${{ secrets.SERV_HOST_ADRESS }}
+          user: ${{ secrets.SERV_HOST_USER }}
+          password: ${{ secrets.SERV_HOST_PASSWORD }}
           localDir: "build"
           remoteDir: "www"
           options: "--delete --asci"
