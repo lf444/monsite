@@ -36,17 +36,6 @@ jobs:
         run: deno cache deps.ts
 
       - name: Run Tests
-      
-      # npm run test:unit homehead.spec.js    
-      - name: Run a multi-line script
-        run: |
-              npm install
-                 
-      
-      
-      
-      
-      
-      
+ 
       
         run: deno test -A --unstable
