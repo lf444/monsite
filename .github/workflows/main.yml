@@ -23,14 +23,49 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout repository
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Run the tests
+        run: npm run test
+      
+      - name: Build
+        run: npm run build
+        
+      - name: Deploy
+        uses: sebastianpopp/ftp-action@releases/v2
+        with:
+          host: ftp.cluster030.hosting.ovh.net
+          user: ${{ secrets.OVH_HOSTING_USER }}
+          password: ${{ secrets.OVH_HOSTING_PASSWORD }}
+          localDir: "build"
+          remoteDir: "www"
+          options: "--delete --asci"
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
