@@ -5,12 +5,14 @@ import formatDate from "../helpers/format-date";
 import Personne from "../models/personne";
 import PersonneService from '../services/personne-service';
 
+
 type Params = { id: string };
 
 const PersonnesDetail: FunctionComponent<RouteComponentProps<Params>> = ({
   match,
 }) => {
   const [personne, setPersonne] = useState<Personne | null>(null);
+  const ref = React.createRef<HTMLDivElement>();
 
   useEffect(() => {
     PersonneService.getPersonne(+match.params.id).then(personne => setPersonne(personne));
@@ -31,7 +33,7 @@ const PersonnesDetail: FunctionComponent<RouteComponentProps<Params>> = ({
               </Link>
 
               <div className="card-stacked">
-                <div className="card-content">
+                <div ref={ref} className="card-content">
                   <table className="bordered striped">
                     <tbody>
                       <tr>
@@ -68,8 +70,9 @@ const PersonnesDetail: FunctionComponent<RouteComponentProps<Params>> = ({
                     </tbody>
                   </table>
                 </div>
+
                 <div className="card-action">
-                  <Link to="/">Retour</Link>
+     <Link to="/">Retour</Link>
                 </div>
               </div>
             </div>
