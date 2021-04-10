@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
   
-const Loader: FunctionComponent = () => {
+const Loader: FunctionComponent = ():JSX.Element => {
    
   return (
     <div className="preloader-wrapper big active"> 
